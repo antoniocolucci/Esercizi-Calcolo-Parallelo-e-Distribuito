@@ -10,7 +10,7 @@
 int main()
 {
     int N, i, t, nloc, r, id, step; //La variabile step
-    float sumtot, sum, *a, t0, t1, t_tot;
+    float sumtot, sum, *a, t0, t1, t_tot;;
 
     sumtot = 0;
 
@@ -27,7 +27,7 @@ int main()
 
     t0 = omp_get_wtime();
 
-    #pragma omp parallel private(sum, nloc, i, id, step) shared(sumtot, r)
+    #pragma omp parallel private(sum, nloc, i, id, step) shared(r) reduction(+:sumtot)
     {
         t = omp_get_num_threads();
         nloc = N/t;
@@ -64,11 +64,9 @@ int main()
     }
 
     printf("La somma totale e': %f\n", sumtot);
-
     t_tot = t1-t0;
 
     printf ("Tempo totale: %f \n", t_tot);
-
 
 
 }
