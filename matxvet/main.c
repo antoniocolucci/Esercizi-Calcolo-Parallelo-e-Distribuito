@@ -20,7 +20,7 @@ int main()
     scanf("%d", &m);
 
     //Allocazioni dinamiche.
-    x = (int *) malloc(n*sizeof(int));
+    x = (int *) malloc(m*sizeof(int));
     b = (double *) malloc(n*sizeof(double));
     mat = (double **) malloc(n*sizeof(double *));
 
@@ -29,24 +29,24 @@ int main()
 
     printf("\n");
 
-    for (i = 0; i < n; i++){
+    for (i = 0; i < m; i++){
 
          printf("Inserire elemento nel vettore X: \n");
          scanf("%d", &x[i]);
     }
 
     //Stampa del vettore.
-    for (i = 0; i < n; i++){
+    for (i = 0; i < m; i++){
 
         printf("Vettore X: %d\n", x[i]);
     }
 
-
+     srand(time(NULL));
     //Inserimento valori nella matrice.
     for (i = 0; i < n; i++)
       for (j = 0; j < m; j++){
 
-           mat[i][j] = 1 + rand() %50; //Riempimento della matrice con numeri casuali da 1 a 50.
+           mat[i][j] = 1 + rand() %10; //Riempimento della matrice con numeri casuali da 1 a 50.
     }
 
 
@@ -62,7 +62,7 @@ int main()
 
     printf("\n");
 
-    b = matxvet(n, m, x, mat);
+    b = matxvet(m, n, x, mat);
 
     //Stampa del risultato.
     for (i = 0; i < n; i++){
