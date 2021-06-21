@@ -9,12 +9,12 @@
 
 int main()
 {
-    int N, i, t, nloc, r, id, step; //La variabile step
+    int N, i, t, nloc, r, id, step;
     float sumtot, sum, *a, t0, t1, t_tot;
 
     sumtot = 0;
 
-    printf("Inserire N: ");
+    printf("Inserire la dimensione del vettore: ");
     scanf("%d", &N);
 
     a = (float*)calloc(N,sizeof(float)); //array allocato dinamicamente.
@@ -30,14 +30,11 @@ int main()
     #pragma omp parallel private(sum, nloc, i, id, step) shared(sumtot, r)
     {
         t = omp_get_num_threads();
-        nloc = N/t;
+        nloc = N/t; //Divisione tra il size del vettore e il numero di threads.
 
-        printf("Sono il thread %d, di %d: numeri %d\n", omp_get_thread_num(), t, nloc);
 
-        r = N%t; //resto
-        id = omp_get_thread_num(); //recupero l'id del thread.
-
-        printf("Sono il thread con id %d, di %d: numeri %d, resto =% d\n",id,t,nloc,r);
+        r = N%t; //Resto
+        id = omp_get_thread_num(); //Recupero l'id del thread.
 
 
         if (id < r)
@@ -46,7 +43,7 @@ int main()
            step = 0;
         }
         else
-           step = r;
+           step = r; //La variabile step consente ad ogni core di sapere di quali elementi si deve occupare.
 
 
         printf("Sono il thread con id %d, di %d: numeri %d, resto = %d, step = %d\n",id,t,nloc,r,step);
@@ -63,12 +60,10 @@ int main()
         t1 = omp_get_wtime();
     }
 
-    printf("La somma totale e': %f\n", sumtot);
+    printf("\nLa somma totale e': %f\n", sumtot);
 
     t_tot = t1-t0;
 
-    printf ("Tempo totale: %f \n", t_tot);
-
-
+    printf ("\nTempo totale: %f \n", t_tot);
 
 }
