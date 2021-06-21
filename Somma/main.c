@@ -1,3 +1,8 @@
+/*
+  Il programma funziona solo de il numero di elementi dell'array è esattamente divisibile per il numero di core.
+  Per esempio con N = 8 e t = 4.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
