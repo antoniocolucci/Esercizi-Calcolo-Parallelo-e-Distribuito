@@ -42,15 +42,15 @@ int binarySearch(int left, int right, int t, int token, int *a)
 
     int size = (right - left + 1)/2; //Sottoporzione del vettore.
 
-    if (size == 0)  //Se il vettore è composto da un solo elemento.
+    if (size == 0)  //Se il vettore Ã¨ composto da un solo elemento.
     {
-      if(a[left] != token) //Se l'unico elemento presente nel vettore è diverso dalla chiave, ritorna -1.
+      if(a[left] != token) //Se l'unico elemento presente nel vettore Ã¨ diverso dalla chiave, ritorna -1.
         {
             return -1;
         }
       else
          {
-            return left; //Se l'unico elemento presente nel vettore è uguale alla chiave, ritorna la posizione in cui si trova l'elemento.
+            return left; //Se l'unico elemento presente nel vettore Ã¨ uguale alla chiave, ritorna la posizione in cui si trova l'elemento.
          }
     }
 
@@ -68,7 +68,7 @@ int binarySearch(int left, int right, int t, int token, int *a)
         printf("\nRightThread: %d", rightThread);
 
         if(id == t-1)
-            rightThread = right; //7
+            rightThread = right; 
 
         if(a[leftThread] <= token && a[rightThread] >= token)
         {
